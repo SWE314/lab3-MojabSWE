@@ -17,11 +17,12 @@ app.get('/login', (req, res) => {
   database.authenticate(user)
   .then((result) => {
     console.log(result);
-    if(result){
+    if(result.length > 0){
       res.json(result);
     }
     else{
-      res.redirect('/?error=true');
+      res.status(401).redirect('/?error=true');
+   
     }
   }
   )
